@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import wordList from './resources/words.json';
 
 const MAX_TYPED_KEYS = 30;
+const WORD_ANIMATION_INTERVAL = 200;
 
 const getWord = () => {
   const index = Math.floor(Math.random() * wordList.length);
@@ -21,36 +22,48 @@ const Word = ({ word, validKeys }) => {
   const matched = word.slice(0, joinedKeys.length);
   const remainder = word.slice(joinedKeys.length);
 
+  const matchedClass = joinedKeys === word ? 'matched completed' : 'matched';
+
   return (
     <>
-      <span className="matched">{matched}</span>
+      <span className={matchedClass}>{matched}</span>
       <span className="remainder">{remainder}</span>
     </>
   );
 };
 
 const App = () => {
-  const [typedKeys, setTypedKeys] = useState([]);
+  const [typedKeys, setTypedKeys] = useState(['']);
   const [validKeys, setValidKeys] = useState([]);
   const [completedWords, setCompletedWords] = useState([]);
   const [word, setWord] = useState('');
+  const containerRef = useRef(null);
 
   useEffect(() => {
     setWord(getWord());
+    if (containerRef) containerRef.current.focus();
   }, []);
 
   useEffect(() => {
     const wordFromValidKeys = validKeys.join('').toLowerCase();
-    if (word && word === wordFromValidKeys) {
-      let newWord = null;
-      do {
-        newWord = getWord();
-      } while (completedWords.includes(newWord));
 
-      setWord(newWord);
-      setValidKeys([]);
-      setCompletedWords((prev) => [...prev, word]);
+    let timeout = null;
+    if (word && word === wordFromValidKeys) {
+      timeout = setTimeout(() => {
+        let newWord = null;
+        do {
+          newWord = getWord();
+        } while (completedWords.includes(newWord));
+
+        setWord(newWord);
+        setValidKeys([]);
+        setCompletedWords((prev) => [...prev, word]);
+      }, WORD_ANIMATION_INTERVAL);
     }
+
+    return () => {
+      if (timeout) clearTimeout(timeout);
+    };
   }, [word, validKeys, completedWords]);
 
   const handleKeyDown = (e) => {
@@ -68,7 +81,7 @@ const App = () => {
   };
 
   return (
-    <div className="container" tabIndex="0" onKeyDown={handleKeyDown}>
+    <div className="container" tabIndex="0" onKeyDown={handleKeyDown} ref={containerRef}>
       <div className="valid-keys">
         <Word word={word} validKeys={validKeys} />
       </div>
