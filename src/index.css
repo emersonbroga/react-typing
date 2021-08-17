@@ -24,6 +24,7 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  overflow: hidden;
 }
 .container:focus {
   outline: none;
@@ -85,9 +86,12 @@ body {
 }
 
 .container .ended {
+  width: 600px;
   padding: 60px;
   margin: 20px 0;
   border: dashed 3px #fdf8c5;
+  position: absolute;
+  background-color: black;
 }
 .container .ended h2 {
   color: #fdf8c5;
