@@ -79,6 +79,33 @@ body {
   overflow: hidden;
 }
 
+.container .timer {
+  font-size: 2.3rem;
+  color: #fdf8c5;
+}
+
+.container .ended {
+  padding: 60px;
+  margin: 20px 0;
+  border: dashed 3px #fdf8c5;
+}
+.container .ended h2 {
+  color: #fdf8c5;
+  font-size: 3rem;
+}
+.container .ended p {
+  font-size: 1.5rem;
+}
+
+.container .ended button {
+  background-color: #5d5d5e;
+  color: #e1e1e1;
+  border: none;
+  margin-top: 10px;
+  padding: 20px 60px;
+  cursor: pointer;
+}
+
 @keyframes moveDown {
   0% {
     top: 0;
