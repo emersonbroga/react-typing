@@ -7,14 +7,14 @@
 Projeto da Maratona JS 3.
 
 O conteúdo desse repositório, faz parte do material didático do curso "Dev Sem Fronteiras", 
-também conhecido como "Curso de React/NodeJS" do [Emerson Brôga Dev]((https://emersonbroga.com/instagram).
+também conhecido como "Curso de React/NodeJS" do [Emerson Brôga Dev](https://emersonbroga.com/instagram).
 
 
 <p align="left">
-Feito com ❤️ usando <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/react/react-original.svg" alt="React" width="20" height="20"/>. Esse repositório e o video têm fins educativos.
+Feito com <img src="https://img.icons8.com/color/48/000000/like--v3.png" width="20" height="20" /> usando <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/react/react-original.svg" alt="React" width="20" height="20"/>. Esse repositório e o video têm fins educativos.
 </p>
 
-
+<img src="https://emersonbroga.com/e/assets/emersonbroga-logo-name-pink.png" alt="Emerson Broga Logo Pink"  height="80"/>
 
 #### Se ainda não segue, veja minhas outras Redes Sociais
 
